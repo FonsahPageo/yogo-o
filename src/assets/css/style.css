@@ -1,0 +1,27 @@
+* {
+    margin: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+form input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="password"] {
+/* width: 100%; */
+padding: 12px 20px;
+/* margin: 8px 0; */
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+select {
+    padding: 10px;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,0 +1,37 @@
+*{
+    margin: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    align-items: center;
+}
+
+nav ul li{
+    display: flex;
+    float: left;
+    padding: 0.4em;
+}
+
+nav ul li a{
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    background: slateblue;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    /* font-size: larger; */
+    padding: 0.5em 1.4em;
+}
+
+nav img{
+    height: 65px;
+}
