@@ -11,11 +11,8 @@ function PaymentForm() {
     const [name, setName] = useState('');
     const [momoNumber, setMomoNumber] = useState('');
     const [amount, setAmount] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('');
-    const [pinSubmitClicked, setPinSubmitClicked] = useState(false);
-    const [pinValue, setPinValue] = useState('');
 
     const handlePaymentMethodChange = (e) => {
         setPaymentMethod(e.target.value);
@@ -23,7 +20,6 @@ function PaymentForm() {
 
     const handleSubmit = async (e, pinSubmitClicked) => {
         e.preventDefault();
-        setIsLoading(true);
         setErrorMessage('');
 
         try {
@@ -70,7 +66,7 @@ function PaymentForm() {
             });
 
             if (enteredPin.length !== 5) {
-                setErrorMessage('PIN must be 5 digits');
+                toast.failure('PIN must be 5 digits');
             } else if (enteredPin) {
                 const response = await axios.post('http://127.0.0.1:5000/payments', {
                     name: name,
@@ -111,6 +107,7 @@ function PaymentForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter name"
+                    required
                 />
                 <br />
 
@@ -124,6 +121,9 @@ function PaymentForm() {
                             value={momoNumber}
                             onChange={(e) => setMomoNumber(e.target.value)}
                             placeholder="671234567"
+                            minLength={9}
+                            maxLength={9}
+                            required
                         />
                         <br />
                     </>
@@ -139,6 +139,9 @@ function PaymentForm() {
                             value={momoNumber}
                             onChange={(e) => setMomoNumber(e.target.value)}
                             placeholder="691234567"
+                            minLength={9}
+                            maxLength={9}
+                            required
                         />
                         <br />
                     </>
@@ -152,15 +155,13 @@ function PaymentForm() {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="Enter amount"
+                    required
                 />
 
                 <br />
 
                 <button onClick={(e) => handleSubmit(e, false)}>Submit Payment</button>
-
-                {pinSubmitClicked && pinValue.length !== 5 && (
-                    <div className="error-message">PIN must be 5 digits</div>
-                )}
+                
 
             </form>
 

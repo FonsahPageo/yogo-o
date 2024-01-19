@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function CreateUserForm() {
 
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [mobileNumber, setMobileNumber] = useState('');
     const [pinCode, setPinCode] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -18,6 +19,7 @@ function CreateUserForm() {
         try {
             const response = await axios.post('http://localhost:5000/createuser', {
                 username,
+                email,
                 mobileNumber,
                 pinCode
             });
@@ -27,6 +29,7 @@ function CreateUserForm() {
 
             // Clear the input fields
             setUsername('');
+            setEmail('');
             setMobileNumber('');
             setPinCode('');
         } catch (error) {
@@ -38,10 +41,9 @@ function CreateUserForm() {
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit} method="POST">
-                <h1>Enter payment details</h1>
+            <form onSubmit={handleSubmit} method="POST" className="create-user-form">
+                <h1>Enter user details</h1>
                 {errorMessage && <div>{errorMessage}</div>}
-
 
                 <label htmlFor="username">Name</label>
                 <br />
@@ -50,7 +52,20 @@ function CreateUserForm() {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter name"
+                    placeholder="Enter username"
+                    required
+                />
+                <br />
+
+                <label htmlFor="email">Email</label>
+                <br />
+                <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="example@domain.com"
+                    required
                 />
                 <br />
 
@@ -62,6 +77,9 @@ function CreateUserForm() {
                     value={mobileNumber}
                     onChange={(e) => setMobileNumber(e.target.value)}
                     placeholder="671234567"
+                    minLength={9}
+                    maxLength={9}
+                    required
                 />
                 <br />
 
@@ -74,6 +92,7 @@ function CreateUserForm() {
                     onChange={(e) => setPinCode(e.target.value)}
                     placeholder="12345"
                     maxLength={5}
+                    required
                 />
                 <br />
 

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../../assets/css/header.css';
 import { Link } from 'react-router-dom';
 function Header() {
+    useEffect(() => {
+        document.title = "YOGO'O";
+    }, []);
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    }
+
     return (
         <header>
             <nav>
@@ -11,17 +21,23 @@ function Header() {
                 <div>
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">Documentation</Link></li>
-                        <li><Link to="/">Testing</Link></li>
+                        <li><Link to="/">About YOGO'O</Link></li>
+                        <li><Link to="/">Test API</Link></li>
                         <li><Link to="/">Products</Link></li>
                         <li><Link to="/">FAQs</Link></li>
-                        <li></li>
-                        {/* <li>Account</li> */}
                     </ul>
                 </div>
                 <ul>
-                    <li><Link to="transactions">Transactions</Link></li>
-                    <li><Link to="create-user">Create user</Link></li>
+                    <li className="dropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+                        <span>Manage users</span>
+                        {isDropdownOpen && (
+                            <ul className="dropdown-menu">
+                                <li><Link to="create-user">Create User</Link></li>
+                                <li><Link to="update-user">Update User</Link></li>
+                            </ul>
+                        )}
+                    </li>
+                    <li><Link to="view-transactions">Transactions</Link></li>
                     <button type="submit">Log In</button>
                 </ul>
             </nav>

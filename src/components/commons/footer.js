@@ -1,25 +1,20 @@
 import React from "react";
 import '../../assets/css/footer.css';
-
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        // <footer className="footer">
-        //     <div className="container-footer">
-        //         <p>&copy; 2024 YOGO'O. All rights reserved.</p>
-        //     </div>
-        // </footer>
         <footer className="footer">
             <div className="">
                 <div className="footer-columns">
                     <div className="footer-column">
                         <h3>Products</h3>
                         <ul>
-                            <li><a href="/">Collect payment</a></li>
-                            <li><a href="/">Send money</a></li>
-                            <li><a href="/">Make payment</a></li>
-                            <li><a href="/">Transactions</a></li>
-                            <li><a href="/">Log In/Sign Up</a></li>
+                            <li><Link to="/">Collect payment</Link></li>
+                            <li><Link to="/">Send money</Link></li>
+                            <li><Link to="/">Make payment</Link></li>
+                            <li><Link to="view-transactions">Transactions</Link></li>
+                            <li><Link to="/">Log In/Sign Up</Link></li>
                         </ul>
                     </div>
                     <div className="footer-column">

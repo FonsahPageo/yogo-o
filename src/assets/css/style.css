@@ -1,19 +1,31 @@
 * {
     margin: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #f2f2f2;
 }
+
+.container{
+    display: flex;
+    justify-content: center;
+    /* height: 100vh; */
+}
+
+.create-user-form{
+    padding: 5px;
+    background: #fff;
+}
+
 
 form input[type="text"],
 input[type="number"],
 input[type="tel"],
-input[type="password"] {
-/* width: 100%; */
-padding: 12px 20px;
-/* margin: 8px 0; */
-display: inline-block;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
+input[type="password"],
+input[type="email"] {
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 select {
@@ -24,4 +36,26 @@ select {
 button {
     padding: 10px;
     border-radius: 10px;
+    background-color: slateblue;
+    color: #fff;
+}
+
+.history{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.transactions-table {
+    background: #fff;
+    padding: 10px;
+    border-collapse: collapse;
+    justify-content: center;
+}
+
+.transactions-table th,
+td {
+    padding: 10px;
 }
